@@ -1,0 +1,20 @@
+replicaCount: 1
+image:
+  repository: registry.choerodon.dev.hithinksoft.com/hithinksoft-wrec/wrec-web
+  tag: 2023.11.24-150614-master
+
+service:
+  enabled: true
+  annotations: {}
+  name: web
+  type: ClusterIP
+  externalPort: 80
+  internalPort: 80
+
+ingress:
+  host: wrec-web-pre.staging.hithinksoft.com
+  path: /
+  annotations: {}
+
+extraEnv:
+  NGINX_WREC_API_HOST: http://wrec-api-test.staging.hithinksoft.com
